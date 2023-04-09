@@ -6,7 +6,7 @@ export default function Header(props) {
         <>
         <Head>
             <title>{props.title}</title>
-            <link rel="icon" type="image/x-icon" href="burger-svgrepo-com.svg"></link>
+            <link rel="icon" type="image/x-icon" href="/burger-svgrepo-com.svg"></link>
         </Head>
         </>
     )

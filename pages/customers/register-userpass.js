@@ -2,12 +2,12 @@ import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
-import Layout from "./components/layout";
-import Header from "./components/header";
+import Layout from "../components/layout";
+import Header from "../components/header";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Register() {
+export default function RegisterUserPass() {
   return (
     <>
       {/* <Layout title = 'Registration'/> */}
@@ -16,23 +16,23 @@ export default function Register() {
         <legend>Registration</legend>
         <form>
           <label>
-            Name:
-            <input type="text" />
+            Username:
+            <input type="text" name="username" />
           </label>
           <br />
 
           <label>
-            Email:
-            <input type="text" />
+            Password:
+            <input type="password" name="password" />
           </label>
           <br />
 
           <label>
-            Phone Number:
-            <input type="text" />
+            Confirm Password:
+            <input type="password" name="confirmPassword" />
           </label>
           <br />
-          {/* need to post data to customer table if valid then set username and password */}
+          {/* Post data to user table then route to profile pic upload */}
           <input type="submit" value={"Next"} />
         </form>
       </fieldset>
