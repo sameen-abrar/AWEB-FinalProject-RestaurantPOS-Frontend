@@ -4,13 +4,18 @@ import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
 import Link from "next/link";
 import Layout from "../components/layout";
+import Cookies from "js-cookie";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function HomePage() {
+export default function HomePage({ data }) {
+  const [search, setSearch] = useState();
   return (
     <>
       <Layout title="Home" />
+      {/* PERFORM SEARCH OPERATION */}
       <fieldset>
         <legend>Search Food</legend>
         <h1>Food that’s good for your heart.</h1>
@@ -23,8 +28,19 @@ export default function HomePage() {
               placeholder="Enter catagory of food"
             />
           </label>
-          <input type="submit" value="Submit" />
+          <input
+            type="submit"
+            value="Submit"
+            onChange={(e) => {
+              setSearch(e.target.value);
+            }}
+          />
         </form>
+        <div>
+          {data.map((item) => (
+            <div>{item.Food_Name}</div>
+          ))}
+        </div>
       </fieldset>
 
       <fieldset>
@@ -50,4 +66,15 @@ export default function HomePage() {
       <Link href={"./chefs"}>Chefs</Link>
     </>
   );
+}
+
+export async function getServerSideProps() {
+  const id = parseInt(Cookies.get("userId"));
+  console.log("async func", id);
+  const response = await axios.get(`http://localhost:3000/api/menu`);
+  const data = await response.data;
+
+  console.log(data);
+
+  return { props: { data } };
 }

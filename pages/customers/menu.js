@@ -14,15 +14,13 @@ export default function Menu({ data }) {
     <>
       <Layout title="Menu" />
       <h1>Menu</h1>
-    {
-      data.map((item)=>(
+      {data.map((item) => (
         <fieldset>
           <legend>{item.Food_Name}</legend>
-          {item.Description}
+
+          <Link href={`./${item.id}`}>{item.Description}</Link>
         </fieldset>
-      ))
-    }
-      
+      ))}
     </>
   );
 }
