@@ -14,11 +14,12 @@ export default function Cart({ data }) {
   const [cart, setCart] = useState([]);
   const [coupons, setCoupons] = useState([]);
 
-  console.log("asdasd", data[0].orderedItems);
+  // console.log("asdasd", data[0].orderedItems);
 
   useEffect(() => {
     async function fetchData() {
-      setCart(data[0].orderedItems);
+      console.log("cart with menu: ", data);
+      setCart(data);
     }
     fetchData();
   }, []);
@@ -26,6 +27,7 @@ export default function Cart({ data }) {
   useEffect(() => {
     async function fetchData() {
       try {
+        // alert("are you sure?")
         const response = await axios.get(`http://localhost:3000/api/coupons`);
         const data = await response.data;
 
@@ -37,21 +39,49 @@ export default function Cart({ data }) {
     fetchData();
   }, []);
 
-  console.log("the thing is that: ", coupons);
+  // console.log("the thing is that: ", coupons);
+
+  const handleRemove = async (id) => {
+    try {
+      const confirmed = window.confirm("Are you sure you want to remove the item?");
+      console.log(id);
+
+      if (confirmed) {
+        const res = await fetch(`http://localhost:3000/api/cart/delete/${id}`, {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+
+        if (!res.ok) {
+          throw new Error("Something went wrong");
+        }
+
+        // handle successful delete
+        console.log("Item deleted successfully");
+        window.location.reload();
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  // console.log("cart with menu: ",cart);
   return (
     <>
       <Layout title="Cart" />
       <h1>Cart</h1>
       {cart.map((item) => (
-        <fieldset>
-          <legend>{item.Amount}</legend>
-          {item.Gross_Price}
+        <fieldset key={item.id}>
+          <legend>{item.menu.Food_Name}</legend>
+          {item.Gross_Price}{" "}
+          <button onClick={() => handleRemove(item.id)}>Remove</button>
         </fieldset>
       ))}
       <br />
       <input type="submit" value={"Checkout"} />
-      
-      <Link href={'./coupons'}>Check coupons</Link>
+
+      <Link href={"./coupons"}>Check coupons</Link>
     </>
   );
 }
@@ -60,11 +90,11 @@ export async function getServerSideProps() {
   const id = parseInt(Cookies.get("userId"));
   console.log("async func", id);
   const response = await axios.get(
-    `http://localhost:3000/api/customer/cart/24`
+    `http://localhost:3000/api/cart/customer/24`
   );
   const data = await response.data;
 
-  console.log(data);
+  console.log("cart with menu: ", data);
 
   return { props: { data } };
 }

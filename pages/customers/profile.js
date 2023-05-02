@@ -6,44 +6,20 @@ import Layout from "../components/layout";
 import Cookies from "js-cookie";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Profile({ customerData }) {
   // const [customerData, setCustomerData] = useState(null);
   const id = 24;
-  // const id = Cookies.get("userId");
-
-  // useEffect(async () => {
-  //   try {
-  //     const response = await fetch(`http://localhost:3000/api/customer/${id}`, {
-  //       method: "GET",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //     });
-
-  //     if (response.ok) {
-  //       const customer = await response.json();
-  //       setCustomerData(customer);
-  //       console.log(customer);
-  //     } else {
-  //       // Handle the error
-  //     }
-  //   } catch (error) {
-  //     // Handle the error
-  //   }
-  // }, [id]);
-
-  // useEffect(async () => {
-  //   setCustomerData(data);
-  // }, []);
+  
 
   console.log(customerData);
   return (
     <>
       <Layout title="Profile" />
-      <h1>Profile</h1>
+      <h1>Profile</h1><Link href={"/customers/update-profile"}>Update</Link>
       {customerData ? (
         <div>
           <table>

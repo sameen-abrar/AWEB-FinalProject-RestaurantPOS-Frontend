@@ -23,11 +23,13 @@ export default function Layout(props) {
         <Link href="./cart"> |Cart|</Link>
       </nav>
       {/* <Image src="/ico.png" alt="me" width="64" height="64" /> */}
-      <main>
-      </main>
-      <div style={{ position: "absolute", bottom: 0, width: "100%" }}>
+      <main></main>
+
+      {/* <footer>
+        <div style={{ position: "", bottom: -100, width: "100%" }}>
         FeedHunger @copyright (c) all rights reserved.
-      </div>
+        </div>
+      </footer> */}
     </>
   );
 }

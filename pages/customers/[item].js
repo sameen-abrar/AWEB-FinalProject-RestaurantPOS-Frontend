@@ -8,9 +8,9 @@ import { useRouter } from "next/router";
 import Cookies from "js-cookie";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import Header from "../components/header";
 
 const inter = Inter({ subsets: ["latin"] });
-
 
 export default function Items() {
   const router = useRouter();
@@ -45,14 +45,16 @@ export default function Items() {
 
   return (
     <>
+      <Layout />
       {menuItem && (
-        // <Layout title={menuItem.Food_Name}>
-        <div style={{ paddingTop: '20px' }}>
-          <h1>{menuItem.Food_Name}</h1>
-          <p>Price: {menuItem.Price}</p>
-          <p>Ingredients: {menuItem.Ingredients}</p>
+        <div>
+          <Header title={menuItem.Food_Name} />
+          <div style={{ paddingTop: "20px" }}>
+            <h1>{menuItem.Food_Name}</h1>
+            <p>Price: {menuItem.Price}</p>
+            <p>Ingredients: {menuItem.Ingredients}</p>
+          </div>
         </div>
-        // </Layout>
       )}
     </>
   );
