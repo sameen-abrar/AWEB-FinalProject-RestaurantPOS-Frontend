@@ -7,7 +7,9 @@ import Link from "next/link";
 import Header from "../components/header";
 import { useState } from "react";
 import axios from "axios";
-import Cookies from 'js-cookie';
+import Cookies from "js-cookie";
+import * as cookie from "cookie";
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -37,13 +39,14 @@ export default function Login() {
     if (response.ok) {
       const user = await response.json();
 
-      console.log("The user is: ",user[0].customer.id)
-      const customerId = user[0].customer.id
+      console.log("The user is: ", user[0].customer.id);
+      const customerId = user[0].customer.id;
       // Save the user ID in a cookie
-      Cookies.set("userId", customerId);
+      Cookies.set("Id", customerId);
+      // sessionStorage.setItem("id", customerId);
 
       // Continue with the login process
-      window.location.href = "/customers/home"
+      window.location.href = "/customers/home";
     } else {
       // Handle the login error
     }

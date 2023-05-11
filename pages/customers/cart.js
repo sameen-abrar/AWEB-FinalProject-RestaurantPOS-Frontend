@@ -6,11 +6,13 @@ import Layout from "../components/layout";
 import Link from "next/link";
 import Cookies from "js-cookie";
 import axios from "axios";
+import * as cookie from "cookie";
 import { useEffect, useState } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Cart({ data }) {
+  console.log(data)
   const [cart, setCart] = useState([]);
   const [coupons, setCoupons] = useState([]);
 
@@ -86,15 +88,30 @@ export default function Cart({ data }) {
   );
 }
 
-export async function getServerSideProps() {
-  const id = parseInt(Cookies.get("userId"));
-  console.log("async func", id);
-  const response = await axios.get(
-    `http://localhost:3000/api/cart/customer/24`
-  );
+export async function getServerSideProps(context) {
+  // const id = await Cookies.get("Id");
+  const ParsedCookie = cookie.parse(context.req.headers.cookie);
+  console.log("Parsed Cookies", ParsedCookie);
+  // console.log("async func", id);
+  // const id = sessionStorage.getItem("id");
+  // console.log("id: ", Cookies.get("Id"));
+  const response = await axios.get("http://localhost:3000/api/cart/customer/" + ParsedCookie.Id);
   const data = await response.data;
 
-  console.log("cart with menu: ", data);
+  console.log(data);
 
   return { props: { data } };
 }
+
+// export async function getServerSideProps() {
+//   // const id = parseInt(Cookies.get("userId"));
+//   console.log("async func", id);
+//   const response = await axios.get(
+//     `http://localhost:3000/api/cart/customer/24`
+//   );
+//   const data = await response.data;
+
+//   console.log("cart with menu: ", data);
+
+//   return { props: { data } };
+// }

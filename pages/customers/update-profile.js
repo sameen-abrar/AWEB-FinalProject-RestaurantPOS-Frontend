@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import { Cookie, Inter } from "next/font/google";
+import * as cookie from "cookie";
 import styles from "@/styles/Home.module.css";
 import Layout from "../components/layout";
 import Cookies from "js-cookie";
@@ -12,9 +13,11 @@ import { useRouter } from "next/router";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function UpdateProfile() {
-  const [customerData, setCustomerData] = useState();
+export default function UpdateProfile(props) {
+  // const [customerData, setCustomerData] = useState();
+  console.log("8392764: ", props.customerData.id);
   const [updateData, setUpdateData] = useState({
+    id: "",
     name: "",
     email: "",
     phone: "",
@@ -29,23 +32,23 @@ export default function UpdateProfile() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const id = parseInt(Cookies.get("userId"));
-        console.log("async func", id);
-        const response = await axios.get(
-          `http://localhost:3000/api/customer/24`
-        );
-        const customer = await response.data;
+        //       const id = parseInt(Cookies.get("userId"));
+        //       console.log("async func", id);
+        //       const response = await axios.get(
+        //         `http://localhost:3000/api/customer/24`
+        //       );
+        //       const customer = await response.data;
 
-        console.log(customer);
-        setCustomerData(customer);
-        setUpdateData(customer);
+        //       console.log(customer);
+        //       setCustomerData(customer);
+        setUpdateData(props.customerData);
       } catch (error) {
         console.log("Error fetching customer data:", error);
       }
     }
     fetchData();
   }, []);
-  const id = 24;
+  // const id = 24;
 
   //   setCustomerData(customer);
   //   console.log(customerData);
@@ -66,11 +69,13 @@ export default function UpdateProfile() {
         const confirmed = window.confirm(
           "Are you sure you want to Update changes?"
         );
-        console.log(id);
+        // console.log(id);
 
         if (confirmed) {
+          console.log("updated data: ", updateData);
           const res = await fetch(
-            `http://localhost:3000/api/customer/update/24`,
+            "http://localhost:3000/api/customer/update/" +
+              props.customerData.id,
             {
               method: "PUT",
               headers: {
@@ -137,12 +142,11 @@ export default function UpdateProfile() {
     return isValid;
   };
 
-  console.log("updated data: ", updateData);
   return (
     <>
       <Layout title="Profile Update" />
       <h1>Profile</h1>
-      {customerData ? (
+      {updateData ? (
         <div>
           <form onSubmit={handleSubmit}>
             <table>
@@ -207,7 +211,7 @@ export default function UpdateProfile() {
 
                 <tr>
                   <td>Returns: </td>
-                  <td>{customerData.no_of_returns}</td>
+                  <td>{props.customerData.no_of_returns}</td>
                 </tr>
               </tbody>
             </table>
@@ -219,6 +223,23 @@ export default function UpdateProfile() {
       )}
     </>
   );
+}
+
+export async function getServerSideProps(context) {
+  // const id = await Cookies.get("Id");
+  const ParsedCookie = cookie.parse(context.req.headers.cookie);
+  console.log("Parsed Cookies", ParsedCookie);
+  // console.log("async func", id);
+  // const id = sessionStorage.getItem("id");
+  // console.log("id: ", Cookies.get("Id"));
+  const response = await axios.get(
+    "http://localhost:3000/api/customer/" + ParsedCookie.Id
+  );
+  const customerData = await response.data;
+
+  console.log(customerData);
+
+  return { props: { customerData } };
 }
 
 // export async function getServerSideProps() {
