@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Blog from "./customers/blog";
 
-export default Main = () => {
+export default function Main() {
   return (
     <BrowserRouter>
       <Routes>
