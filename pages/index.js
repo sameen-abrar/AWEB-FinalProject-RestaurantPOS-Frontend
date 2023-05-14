@@ -5,7 +5,6 @@ import styles from "@/styles/Home.module.css";
 // import Layout from "./components/layout";
 import Link from "next/link";
 // import Header from "./components/header";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Blog from "./customers/blog";
 import Header from "./components/header";
 

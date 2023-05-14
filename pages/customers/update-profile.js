@@ -7,9 +7,6 @@ import Layout from "../components/layout";
 import Cookies from "js-cookie";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import Link from "next/link";
-import { Route, Router } from "react-router-dom";
-import { useRouter } from "next/router";
 
 const inter = Inter({ subsets: ["latin"] });
 
