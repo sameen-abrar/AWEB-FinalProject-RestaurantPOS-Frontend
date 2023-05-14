@@ -73,7 +73,7 @@ export default function Cart({ data }) {
     <>
       <Layout title="Cart" />
       <h1>Cart</h1>
-      {cart.map((item) => (
+      {cart && cart.map((item) => (
         <fieldset key={item.id}>
           <legend>{item.menu.Food_Name}</legend>
           {item.Gross_Price}{" "}
@@ -97,6 +97,11 @@ export async function getServerSideProps(context) {
   // console.log("id: ", Cookies.get("Id"));
   const response = await axios.get("http://localhost:3000/api/cart/customer/" + ParsedCookie.Id);
   const data = await response.data;
+
+  // const cart = data.forEach(element => {
+  //   if(!element.transactionId)
+
+  // });
 
   console.log(data);
 

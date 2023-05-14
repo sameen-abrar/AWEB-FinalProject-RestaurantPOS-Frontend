@@ -9,7 +9,7 @@ import { useState } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
 import * as cookie from "cookie";
-
+import { json } from "react-router-dom";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -43,6 +43,8 @@ export default function Login() {
       const customerId = user[0].customer.id;
       // Save the user ID in a cookie
       Cookies.set("Id", customerId);
+
+      localStorage.setItem("loggedUser", JSON.stringify(user[0].customer));
       // sessionStorage.setItem("id", customerId);
 
       // Continue with the login process
@@ -85,7 +87,7 @@ export default function Login() {
           <br />
           <input type="submit" value="Login" />
         </form>
-        <Link href={"/register"}>Don't have an account?</Link>
+        <Link href={"./register"}>Don't have an account?</Link>
       </fieldset>
     </>
   );

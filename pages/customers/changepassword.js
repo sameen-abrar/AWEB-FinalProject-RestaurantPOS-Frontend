@@ -3,10 +3,11 @@ import Image from "next/image";
 import { Inter } from "next/font/google";
 import { useEffect, useState } from "react";
 import Header from "../components/header";
+import Layout from "../components/layout";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function RegisterUserPass() {
+export default function ChangePassword() {
   const [userData, setUserData] = useState({
     UserName: "",
     Password: "",
@@ -28,7 +29,7 @@ export default function RegisterUserPass() {
   useEffect(() => {
     let response;
     if (typeof window !== "undefined") {
-      response = JSON.parse(localStorage.getItem("customerData"));
+      response = JSON.parse(localStorage.getItem("loggedUser"));
     }
     setCustomerData(response);
     console.log("JSON: ", response);
@@ -119,16 +120,16 @@ export default function RegisterUserPass() {
   return (
     <>
       {/* <Layout title = 'Registration'/> */}
-      <Header title={"SignUp"}></Header>
+      <Layout title={"Change Password"} />
       <fieldset>
-        <legend>Registration</legend>
+        <legend>Change Password</legend>
         <form onSubmit={handleSubmit}>
           <label>
-            Username:
+            Current Password:
             <input
-              type="text"
-              name="UserName"
-              value={userData.UserName}
+              type="password"
+              name="CurrentPassword"
+              //   value={userData.UserName}
               onChange={handleChange}
             />
             {formErrors.UserName && (
@@ -141,8 +142,8 @@ export default function RegisterUserPass() {
             Password:
             <input
               type="password"
-              name="Password"
-              value={userData.Password}
+              name="newPassword"
+              //   value={userData.Password}
               onChange={handleChange}
             />
             {formErrors.Password && (
@@ -155,7 +156,7 @@ export default function RegisterUserPass() {
             Confirm Password:
             <input
               type="password"
-              name="confirmPassword"
+              name="newConfirmPassword"
               onChange={(e) => {
                 setConPass(e.target.value);
               }}
