@@ -143,83 +143,161 @@ export default function UpdateProfile(props) {
   };
 
   return (
+    // <>
+    //   <Layout title="Profile Update" />
+    //   <h1>Profile</h1>
+    //   {updateData ? (
+    //     <div>
+    //       <form onSubmit={handleSubmit}>
+    //         <table>
+    //           {/* <thead>
+    //           <tr>
+    //             <button >Edit Profile</button>
+    //             <button>Delete Account</button>
+    //           </tr>
+    //         </thead> */}
+    //           <tbody>
+    //             <tr>
+    //               <td>Name: </td>
+    //               <td>
+    //                 <input
+    //                   type="text"
+    //                   name="name"
+    //                   value={updateData.name}
+    //                   onChange={handleChange}
+    //                 />
+    //               </td>
+    //               <td>
+    //                 {formErrors.name && (
+    //                   <span className="error">{formErrors.name}</span>
+    //                 )}
+    //               </td>
+    //             </tr>
+
+    //             <tr>
+    //               <td>Email: </td>
+    //               <td>
+    //                 <input
+    //                   type="text"
+    //                   name="email"
+    //                   value={updateData.email}
+    //                   onChange={handleChange}
+    //                 />
+    //               </td>
+    //               <td>
+    //                 {" "}
+    //                 {formErrors.email && (
+    //                   <span className="error">{formErrors.email}</span>
+    //                 )}
+    //               </td>
+    //             </tr>
+
+    //             <tr>
+    //               <td>Phone: </td>
+    //               <td>
+    //                 <input
+    //                   type="text"
+    //                   name="phone"
+    //                   value={updateData.phone}
+    //                   onChange={handleChange}
+    //                 />
+    //               </td>
+    //               <td>
+    //                 {formErrors.phone && (
+    //                   <span className="error">{formErrors.phone}</span>
+    //                 )}
+    //               </td>
+    //             </tr>
+
+    //             <tr>
+    //               <td>Returns: </td>
+    //               <td>{props.customerData.no_of_returns}</td>
+    //             </tr>
+    //           </tbody>
+    //         </table>
+    //         <button>Confirm Changes</button>
+    //       </form>
+    //     </div>
+    //   ) : (
+    //     <div>...Loading</div>
+    //   )}
+    // </>
     <>
       <Layout title="Profile Update" />
-      <h1>Profile</h1>
+      <h1 className="text-2xl font-bold mb-4">Profile</h1>
       {updateData ? (
-        <div>
+        <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
           <form onSubmit={handleSubmit}>
-            <table>
-              {/* <thead>
-              <tr>
-                <button >Edit Profile</button>
-                <button>Delete Account</button>
-              </tr>
-            </thead> */}
+            <table className="w-full">
               <tbody>
-                <tr>
-                  <td>Name: </td>
-                  <td>
+                <tr className="border-b border-gray-200">
+                  <td className="font-bold py-2">Name:</td>
+                  <td className="py-2">
                     <input
                       type="text"
                       name="name"
                       value={updateData.name}
                       onChange={handleChange}
+                      className="w-full px-3 py-2 border border-gray-300 rounded"
                     />
                   </td>
                   <td>
                     {formErrors.name && (
-                      <span className="error">{formErrors.name}</span>
+                      <span className="text-red-500">{formErrors.name}</span>
                     )}
                   </td>
                 </tr>
 
-                <tr>
-                  <td>Email: </td>
-                  <td>
+                <tr className="border-b border-gray-200">
+                  <td className="font-bold py-2">Email:</td>
+                  <td className="py-2">
                     <input
                       type="text"
                       name="email"
                       value={updateData.email}
                       onChange={handleChange}
+                      className="w-full px-3 py-2 border border-gray-300 rounded"
                     />
                   </td>
                   <td>
                     {" "}
                     {formErrors.email && (
-                      <span className="error">{formErrors.email}</span>
+                      <span className="text-red-500">{formErrors.email}</span>
                     )}
                   </td>
                 </tr>
 
-                <tr>
-                  <td>Phone: </td>
-                  <td>
+                <tr className="border-b border-gray-200">
+                  <td className="font-bold py-2">Phone:</td>
+                  <td className="py-2">
                     <input
                       type="text"
                       name="phone"
                       value={updateData.phone}
                       onChange={handleChange}
+                      className="w-full px-3 py-2 border border-gray-300 rounded"
                     />
                   </td>
                   <td>
                     {formErrors.phone && (
-                      <span className="error">{formErrors.phone}</span>
+                      <span className="text-red-500">{formErrors.phone}</span>
                     )}
                   </td>
                 </tr>
 
-                <tr>
-                  <td>Returns: </td>
-                  <td>{props.customerData.no_of_returns}</td>
+                <tr className="border-b border-gray-200">
+                  <td className="font-bold py-2">Returns:</td>
+                  <td className="py-2">{props.customerData.no_of_returns}</td>
                 </tr>
               </tbody>
             </table>
-            <button>Confirm Changes</button>
+            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4">
+              Confirm Changes
+            </button>
           </form>
         </div>
       ) : (
-        <div>...Loading</div>
+        <div className="text-center">...Loading</div>
       )}
     </>
   );

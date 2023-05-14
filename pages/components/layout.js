@@ -52,37 +52,37 @@ export default function Layout(props) {
               height="120"
             />
           </Link>
-          <Link href="./home">
+          <Link href="/customers/home">
             <p className="text-white font-semibold hover:text-gray-300 transition duration-300 ease-in-out">
               Home
             </p>
           </Link>
-          <Link href="./menu">
+          <Link href="/customers/menu">
             <p className="text-white font-semibold hover:text-gray-300 transition duration-300 ease-in-out">
               Menu
             </p>
           </Link>
-          <Link href="./chefs">
+          <Link href="/customers/chefs">
             <p className="text-white font-semibold hover:text-gray-300 transition duration-300 ease-in-out">
               Chefs
             </p>
           </Link>
-          <Link href="./pages">
+          <Link href="/customers/pages">
             <p className="text-white font-semibold hover:text-gray-300 transition duration-300 ease-in-out">
               Pages
             </p>
           </Link>
-          <Link href="./blog">
+          <Link href="/customers/blog">
             <p className="text-white font-semibold hover:text-gray-300 transition duration-300 ease-in-out">
               Blog
             </p>
           </Link>
-          <Link href="./contact">
+          <Link href="/customers/contact">
             <p className="text-white font-semibold hover:text-gray-300 transition duration-300 ease-in-out">
               Contact Us
             </p>
           </Link>
-          <Link href="./profile">
+          <Link href="/customers/profile">
             <p className="text-white font-semibold hover:text-gray-300 transition duration-300 ease-in-out">
               My Profile
             </p>

@@ -106,7 +106,9 @@ export default function HomePage({ data }) {
               className="bg-white overflow-hidden shadow rounded-lg"
             >
               <Image
-                src="/placeholder.jpg"
+                // src="/Pizza-3007395.jpg"
+                src={`/${item.id}.jpg`}
+
                 alt={item.Food_Name}
                 width={640}
                 height={426}

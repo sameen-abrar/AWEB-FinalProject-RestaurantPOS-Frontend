@@ -16,40 +16,80 @@ export default function Profile({ customerData }) {
 
   console.log(customerData);
   return (
+    // <>
+    //   <Layout title="Profile" />
+    //   <h1>Profile</h1>
+    //   <Link href={"/customers/update-profile"}>Update</Link>{"  "}
+    //   {/* <Link href={"/customers/changepassword"}>Change Password</Link> */}
+    //   {customerData ? (
+    //     <div>
+    //       <table>
+    //         <tbody>
+    //           <tr>
+    //             <td>Name: </td>
+    //             <td>{customerData.name}</td>
+    //           </tr>
+ 
+    //           <tr>
+    //             <td>Email: </td>
+    //             <td>{customerData.email}</td>
+    //           </tr>
+
+    //           <tr>
+    //             <td>Phone: </td>
+    //             <td>{customerData.phone}</td>
+    //           </tr>
+
+    //           <tr>
+    //             <td>Returns: </td>
+    //             <td>{customerData.no_of_returns}</td>
+    //           </tr>
+    //         </tbody>
+    //       </table>
+    //     </div>
+    //   ) : (
+    //     <div>...Loading</div>
+    //   )}
+    // </>
     <>
       <Layout title="Profile" />
-      <h1>Profile</h1>
-      <Link href={"/customers/update-profile"}>Update</Link>{"  "}
-      {/* <Link href={"/customers/changepassword"}>Change Password</Link> */}
-      {customerData ? (
-        <div>
-          <table>
-            <tbody>
-              <tr>
-                <td>Name: </td>
-                <td>{customerData.name}</td>
-              </tr>
- 
-              <tr>
-                <td>Email: </td>
-                <td>{customerData.email}</td>
-              </tr>
+      <div className="bg-white p-4 rounded-lg shadow-lg">
+        <h1 className="text-3xl font-bold underline mb-4">Profile</h1>
+        <Link href={"/customers/update-profile"}>
+          <p className="text-blue-500 hover:underline">Update</p>
+        </Link>
+        {"  "}
+        {/* <Link href={"/customers/changepassword"}>Change Password</Link> */}
+        {customerData ? (
+          <div className="mt-4">
+            <table className="table-auto">
+              <tbody>
+                <tr>
+                  <td className="py-2 font-medium">Name: </td>
+                  <td className="py-2">{customerData.name}</td>
+                </tr>
 
-              <tr>
-                <td>Phone: </td>
-                <td>{customerData.phone}</td>
-              </tr>
+                <tr>
+                  <td className="py-2 font-medium">Email: </td>
+                  <td className="py-2">{customerData.email}</td>
+                </tr>
 
-              <tr>
-                <td>Returns: </td>
-                <td>{customerData.no_of_returns}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      ) : (
-        <div>...Loading</div>
-      )}
+                <tr>
+                  <td className="py-2 font-medium">Phone: </td>
+                  <td className="py-2">{customerData.phone}</td>
+                </tr>
+
+                <tr>
+                  <td className="py-2 font-medium">Returns: </td>
+                  <td className="py-2">{customerData.no_of_returns}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        ) : (
+          <div className="mt-4">...Loading</div>
+        )}
+      </div>
     </>
   );
 }

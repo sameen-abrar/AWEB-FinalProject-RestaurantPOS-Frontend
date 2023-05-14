@@ -117,62 +117,148 @@ export default function RegisterUserPass() {
   };
 
   return (
+    // <>
+    //   {/* <Layout title = 'Registration'/> */}
+    //   <Header title={"SignUp"}></Header>
+    //   <fieldset>
+    //     <legend>Registration</legend>
+    //     <form onSubmit={handleSubmit}>
+    //       <label>
+    //         Username:
+    //         <input
+    //           type="text"
+    //           name="UserName"
+    //           value={userData.UserName}
+    //           onChange={handleChange}
+    //         />
+    //         {formErrors.UserName && (
+    //           <span className="error">{formErrors.UserName}</span>
+    //         )}
+    //       </label>
+    //       <br />
+
+    //       <label>
+    //         Password:
+    //         <input
+    //           type="password"
+    //           name="Password"
+    //           value={userData.Password}
+    //           onChange={handleChange}
+    //         />
+    //         {formErrors.Password && (
+    //           <span className="error">{formErrors.Password}</span>
+    //         )}
+    //       </label>
+    //       <br />
+
+    //       <label>
+    //         Confirm Password:
+    //         <input
+    //           type="password"
+    //           name="confirmPassword"
+    //           onChange={(e) => {
+    //             setConPass(e.target.value);
+    //           }}
+    //         />
+    //         {formErrors.confirmPassword && (
+    //           <span className="error">{formErrors.confirmPassword}</span>
+    //         )}
+    //       </label>
+    //       <br />
+    //       {/* Post data to user table then route to profile pic upload */}
+    //       <button>Next</button>
+    //     </form>
+    //   </fieldset>
+    //   {formErrors.Password && (
+    //     <span className="error">
+    //       The password must contain the following:
+    //       <ul>
+    //         <li>At least 8 characters long</li>
+    //         <li>Have at least one lowercase letter</li>
+    //         <li>Have at least one uppercase letter</li>
+    //         <li>Have at least one digit</li>
+    //         <li>Have at least one special character {"(@$!%*?&)"}</li>
+    //       </ul>
+    //     </span>
+    //   )}
+
+    //   {formErrors.UserName && (
+    //     <span className="error">
+    //       The Username must contain the following:
+    //       <ul>
+    //         <li>At least 3 characters long</li>
+    //         <li>At most 16 characters long</li>
+    //         <li>
+    //           {`Only contain alphanumeric characters (letters A-Z, both lowercase
+    //           and uppercase, and numbers 0-9), underscores (_), or hyphens (-)`}
+    //         </li>
+    //       </ul>
+    //     </span>
+    //   )}
+    // </>
     <>
-      {/* <Layout title = 'Registration'/> */}
       <Header title={"SignUp"}></Header>
-      <fieldset>
-        <legend>Registration</legend>
-        <form onSubmit={handleSubmit}>
-          <label>
-            Username:
+      <fieldset className="bg-gray-100 rounded-lg shadow-md p-8">
+        <legend className="text-lg font-semibold">Registration</legend>
+        <form onSubmit={handleSubmit} className="mt-4">
+          <label className="block">
+            <span className="text-gray-700">Username:</span>
             <input
               type="text"
               name="UserName"
               value={userData.UserName}
               onChange={handleChange}
+              className="form-input mt-1 block w-full rounded-md border-gray-300 shadow-sm"
             />
             {formErrors.UserName && (
-              <span className="error">{formErrors.UserName}</span>
+              <span className="error text-red-500">{formErrors.UserName}</span>
             )}
           </label>
           <br />
 
-          <label>
-            Password:
+          <label className="block mt-4">
+            <span className="text-gray-700">Password:</span>
             <input
               type="password"
               name="Password"
               value={userData.Password}
               onChange={handleChange}
+              className="form-input mt-1 block w-full rounded-md border-gray-300 shadow-sm"
             />
             {formErrors.Password && (
-              <span className="error">{formErrors.Password}</span>
+              <span className="error text-red-500">{formErrors.Password}</span>
             )}
           </label>
           <br />
 
-          <label>
-            Confirm Password:
+          <label className="block mt-4">
+            <span className="text-gray-700">Confirm Password:</span>
             <input
               type="password"
               name="confirmPassword"
               onChange={(e) => {
                 setConPass(e.target.value);
               }}
+              className="form-input mt-1 block w-full rounded-md border-gray-300 shadow-sm"
             />
             {formErrors.confirmPassword && (
-              <span className="error">{formErrors.confirmPassword}</span>
+              <span className="error text-red-500">
+                {formErrors.confirmPassword}
+              </span>
             )}
           </label>
           <br />
+
           {/* Post data to user table then route to profile pic upload */}
-          <button>Next</button>
+          <button className="mt-4 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline hover:shadow-lg">
+            Next
+          </button>
         </form>
       </fieldset>
       {formErrors.Password && (
-        <span className="error">
+        <span className="error text-red-500">
           The password must contain the following:
-          <ul>
+          <ul className="list-disc list-inside">
             <li>At least 8 characters long</li>
             <li>Have at least one lowercase letter</li>
             <li>Have at least one uppercase letter</li>
@@ -183,14 +269,14 @@ export default function RegisterUserPass() {
       )}
 
       {formErrors.UserName && (
-        <span className="error">
+        <span className="error text-red-500">
           The Username must contain the following:
-          <ul>
+          <ul className="list-disc list-inside">
             <li>At least 3 characters long</li>
             <li>At most 16 characters long</li>
             <li>
               {`Only contain alphanumeric characters (letters A-Z, both lowercase
-              and uppercase, and numbers 0-9), underscores (_), or hyphens (-)`}
+        and uppercase, and numbers 0-9), underscores (_), or hyphens (-)`}
             </li>
           </ul>
         </span>

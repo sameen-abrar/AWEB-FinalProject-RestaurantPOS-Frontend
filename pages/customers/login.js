@@ -55,40 +55,110 @@ export default function Login() {
   };
 
   return (
+    // <>
+    //   {/* <Layout title = 'Login'/> */}
+    //   <Header title={"Login"}></Header>
+    //   <fieldset>
+    //     <legend>Login page</legend>
+    //     <form onSubmit={handleLogin}>
+    //       <label>
+    //         Username:
+    //         <input
+    //           type="text"
+    //           name="uname"
+    //           placeholder="e.g. Rob_Tillman"
+    //           onChange={(e) => {
+    //             setUsername(e.target.value);
+    //           }}
+    //         />
+    //       </label>
+    //       <br />
+    //       <label>
+    //         Password:
+    //         <input
+    //           type="password"
+    //           name="password"
+    //           placeholder=""
+    //           onChange={(e) => {
+    //             setPassword(e.target.value);
+    //           }}
+    //         />
+    //       </label>
+    //       <br />
+    //       <input type="submit" value="Login" />
+    //     </form>
+    //     <Link href={"./register"}>Don't have an account?</Link>
+    //   </fieldset>
+    // </>
     <>
-      {/* <Layout title = 'Login'/> */}
-      <Header title={"Login"}></Header>
-      <fieldset>
-        <legend>Login page</legend>
-        <form onSubmit={handleLogin}>
-          <label>
-            Username:
-            <input
-              type="text"
-              name="uname"
-              placeholder="e.g. Rob_Tillman"
-              onChange={(e) => {
-                setUsername(e.target.value);
-              }}
-            />
-          </label>
-          <br />
-          <label>
-            Password:
-            <input
-              type="password"
-              name="password"
-              placeholder=""
-              onChange={(e) => {
-                setPassword(e.target.value);
-              }}
-            />
-          </label>
-          <br />
-          <input type="submit" value="Login" />
-        </form>
-        <Link href={"./register"}>Don't have an account?</Link>
-      </fieldset>
+      <Header title="Login" />
+      <div className="flex justify-center items-center h-screen bg-gray-100">
+        <div className="w-full max-w-md">
+          <form
+            onSubmit={handleLogin}
+            className="bg-white shadow-lg rounded-lg px-8 pt-6 pb-8 mb-4"
+          >
+            <fieldset>
+              <legend className="text-center text-gray-800 font-bold mb-6 text-2xl">
+                Login
+              </legend>
+              <div className="mb-4">
+                <label
+                  className="block text-gray-700 font-bold mb-2"
+                  htmlFor="username"
+                >
+                  Username:
+                </label>
+                <input
+                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  type="text"
+                  name="uname"
+                  id="username"
+                  placeholder="e.g. Rob_Tillman"
+                  onChange={(e) => {
+                    setUsername(e.target.value);
+                  }}
+                  required
+                />
+              </div>
+              <div className="mb-6">
+                <label
+                  className="block text-gray-700 font-bold mb-2"
+                  htmlFor="password"
+                >
+                  Password:
+                </label>
+                <input
+                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  type="password"
+                  name="password"
+                  id="password"
+                  placeholder=""
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                  }}
+                  required
+                />
+              </div>
+              <div className="flex items-center justify-between">
+                <button
+                  type="submit"
+                  className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline hover:shadow-lg"
+                >
+                  Login
+                </button>
+
+                <Link
+                  href={"./register"}
+                  className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
+                >
+                  Don't have an account?
+                </Link>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+      </div>
     </>
   );
 }

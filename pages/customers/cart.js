@@ -12,7 +12,7 @@ import { useEffect, useState } from "react";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Cart({ data }) {
-  console.log(data)
+  console.log(data);
   const [cart, setCart] = useState([]);
   const [coupons, setCoupons] = useState([]);
 
@@ -45,7 +45,9 @@ export default function Cart({ data }) {
 
   const handleRemove = async (id) => {
     try {
-      const confirmed = window.confirm("Are you sure you want to remove the item?");
+      const confirmed = window.confirm(
+        "Are you sure you want to remove the item?"
+      );
       console.log(id);
 
       if (confirmed) {
@@ -70,20 +72,54 @@ export default function Cart({ data }) {
   };
   // console.log("cart with menu: ",cart);
   return (
+    // <>
+    //   <Layout title="Cart" />
+    //   <h1>Cart</h1>
+    //   {cart && cart.map((item) => (
+    //     <fieldset key={item.id}>
+    //       <legend>{item.menu.Food_Name}</legend>
+    //       {item.Gross_Price}{" "}
+    //       <button onClick={() => handleRemove(item.id)}>Remove</button>
+    //     </fieldset>
+    //   ))}
+    //   <br />
+    //   <input type="submit" value={"Checkout"} />
+
+    //   <Link href={"./coupons"}>Check coupons</Link>
+    // </>
     <>
       <Layout title="Cart" />
-      <h1>Cart</h1>
-      {cart && cart.map((item) => (
-        <fieldset key={item.id}>
-          <legend>{item.menu.Food_Name}</legend>
-          {item.Gross_Price}{" "}
-          <button onClick={() => handleRemove(item.id)}>Remove</button>
-        </fieldset>
-      ))}
+      <h1 className="text-3xl font-bold mb-4">Cart</h1>
+      {cart &&
+        cart.map((item) => (
+          <fieldset
+            key={item.id}
+            className="border border-gray-300 rounded-lg p-4 mb-4"
+          >
+            <legend className="text-lg font-medium mb-2">
+              {item.menu.Food_Name}
+            </legend>
+            <div className="flex justify-between items-center">
+              <span className="text-gray-600">{item.Gross_Price}</span>
+              <button
+                className="px-2 py-1 bg-red-500 text-white rounded-md hover:bg-red-600"
+                onClick={() => handleRemove(item.id)}
+              >
+                Remove
+              </button>
+            </div>
+          </fieldset>
+        ))}
       <br />
-      <input type="submit" value={"Checkout"} />
+      <input
+        type="submit"
+        value={"Checkout"}
+        className="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600"
+      />
 
-      <Link href={"./coupons"}>Check coupons</Link>
+      <Link href={"./coupons"} className="text-blue-500 hover:underline">
+        Check coupons
+      </Link>
     </>
   );
 }
@@ -95,7 +131,9 @@ export async function getServerSideProps(context) {
   // console.log("async func", id);
   // const id = sessionStorage.getItem("id");
   // console.log("id: ", Cookies.get("Id"));
-  const response = await axios.get("http://localhost:3000/api/cart/customer/" + ParsedCookie.Id);
+  const response = await axios.get(
+    "http://localhost:3000/api/cart/customer/" + ParsedCookie.Id
+  );
   const data = await response.data;
 
   // const cart = data.forEach(element => {

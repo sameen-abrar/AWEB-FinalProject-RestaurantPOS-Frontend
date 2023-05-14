@@ -44,15 +44,35 @@ export default function Items() {
   }, []);
 
   return (
+    // <>
+    //   <Layout />
+    //   {menuItem && (
+    //     <div>
+    //       <Header title={menuItem.Food_Name} />
+    //       <div style={{ paddingTop: "20px" }}>
+    //         <h1>{menuItem.Food_Name}</h1>
+    //         <p>Price: {menuItem.Price}</p>
+    //         <p>Ingredients: {menuItem.Ingredients}</p>
+    //       </div>
+    //     </div>
+    //   )}
+    // </>
+
     <>
       <Layout />
       {menuItem && (
-        <div>
+        <div className="bg-white rounded-lg shadow-lg p-6">
           <Header title={menuItem.Food_Name} />
-          <div style={{ paddingTop: "20px" }}>
-            <h1>{menuItem.Food_Name}</h1>
-            <p>Price: {menuItem.Price}</p>
-            <p>Ingredients: {menuItem.Ingredients}</p>
+          <div className="py-8">
+            <h1 className="text-4xl font-bold text-gray-800 mb-4">
+              {menuItem.Food_Name}
+            </h1>
+            <p className="text-lg text-gray-600 mb-2">
+              Price: {menuItem.Price}
+            </p>
+            <p className="text-lg text-gray-600 mb-2">
+              Ingredients: {menuItem.Ingredients}
+            </p>
           </div>
         </div>
       )}

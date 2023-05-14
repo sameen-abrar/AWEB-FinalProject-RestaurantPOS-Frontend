@@ -88,55 +88,132 @@ export default function Register() {
   };
 
   return (
+    // <>
+    //   {/* <Layout title = 'Registration'/> */}
+    //   <Header title={"Sign Up"}></Header>
+    //   <fieldset>
+    //     <legend>Registration</legend>
+    //     <form onSubmit={handleSubmit} encType="">
+    //       <label>
+    //         Name:
+    //         <input
+    //           type="text"
+    //           name="name"
+    //           value={customerData.name}
+    //           onChange={handleChange}
+    //         />{" "}
+    //         {formErrors.name && (
+    //           <span className="error">{formErrors.name}</span>
+    //         )}
+    //       </label>
+    //       <br />
+
+    //       <label>
+    //         Email:
+    //         <input
+    //           type="text"
+    //           name="email"
+    //           onChange={handleChange}
+    //           value={customerData.email}
+    //         />
+    //         {formErrors.name && (
+    //           <span className="error">{formErrors.email}</span>
+    //         )}
+    //       </label>
+    //       <br />
+
+    //       <label>
+    //         Phone Number:
+    //         <input
+    //           type="text"
+    //           name="phone"
+    //           onChange={handleChange}
+    //           // value={customerData.phone}
+    //         />
+    //         {formErrors.name && (
+    //           <span className="error">{formErrors.phone}</span>
+    //         )}
+    //       </label>
+    //       <br />
+    //       {/* need to post data to customer table if valid then set username and password */}
+    //       <button>Next</button>
+    //     </form>
+    //   </fieldset>
+    // </>
     <>
-      {/* <Layout title = 'Registration'/> */}
       <Header title={"Sign Up"}></Header>
-      <fieldset>
-        <legend>Registration</legend>
-        <form onSubmit={handleSubmit} encType="">
-          <label>
-            Name:
+      <fieldset className="flex flex-col items-center justify-center">
+        <legend className="text-2xl font-bold mb-8">Registration</legend>
+        <form onSubmit={handleSubmit} encType="" className="w-full max-w-md">
+          <div className="mb-4">
+            <label
+              className="block text-gray-700 font-bold mb-2"
+              htmlFor="name"
+            >
+              Name:
+            </label>
             <input
+              className={`appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
+                formErrors.name ? "border-red-500" : ""
+              }`}
               type="text"
               name="name"
               value={customerData.name}
               onChange={handleChange}
-            />{" "}
+            />
             {formErrors.name && (
-              <span className="error">{formErrors.name}</span>
+              <span className="text-red-500 text-sm">{formErrors.name}</span>
             )}
-          </label>
-          <br />
+          </div>
 
-          <label>
-            Email:
+          <div className="mb-4">
+            <label
+              className="block text-gray-700 font-bold mb-2"
+              htmlFor="email"
+            >
+              Email:
+            </label>
             <input
+              className={`appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
+                formErrors.email ? "border-red-500" : ""
+              }`}
               type="text"
               name="email"
               onChange={handleChange}
               value={customerData.email}
             />
-            {formErrors.name && (
-              <span className="error">{formErrors.email}</span>
+            {formErrors.email && (
+              <span className="text-red-500 text-sm">{formErrors.email}</span>
             )}
-          </label>
-          <br />
+          </div>
 
-          <label>
-            Phone Number:
+          <div className="mb-4">
+            <label
+              className="block text-gray-700 font-bold mb-2"
+              htmlFor="phone"
+            >
+              Phone Number:
+            </label>
             <input
+              className={`appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
+                formErrors.phone ? "border-red-500" : ""
+              }`}
               type="text"
               name="phone"
               onChange={handleChange}
               // value={customerData.phone}
             />
-            {formErrors.name && (
-              <span className="error">{formErrors.phone}</span>
+            {formErrors.phone && (
+              <span className="text-red-500 text-sm">{formErrors.phone}</span>
             )}
-          </label>
-          <br />
-          {/* need to post data to customer table if valid then set username and password */}
-          <button>Next</button>
+          </div>
+
+          <button
+            className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline hover:shadow-lg"
+            type="submit"
+          >
+            Next
+          </button>
         </form>
       </fieldset>
     </>
