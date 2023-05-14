@@ -42,6 +42,19 @@ export default function Cart({ data }) {
   }, []);
 
   // console.log("the thing is that: ", coupons);
+  const [quantity, setQuantity] = useState(1);
+
+  const handleIncrement = () => {
+    setQuantity(quantity + 1);
+    // onUpdate({ ...item, quantity: quantity + 1 });
+  };
+
+  const handleDecrement = () => {
+    if (quantity > 1) {
+      setQuantity(quantity - 1);
+      // onUpdate({ ...item, quantity: quantity - 1 });
+    }
+  };
 
   const handleRemove = async (id) => {
     try {
@@ -90,7 +103,7 @@ export default function Cart({ data }) {
     <>
       <Layout title="Cart" />
       <h1 className="text-3xl font-bold mb-4">Cart</h1>
-      {cart &&
+      {cart ? (
         cart.map((item) => (
           <fieldset
             key={item.id}
@@ -100,7 +113,13 @@ export default function Cart({ data }) {
               {item.menu.Food_Name}
             </legend>
             <div className="flex justify-between items-center">
-              <span className="text-gray-600">{item.Gross_Price}</span>
+              <span className="text-gray-600">
+                {quantity !== null && (
+                  <span className="text-gray-600">
+                    {item.menu.Price * quantity}
+                  </span>
+                )}
+              </span>
               <button
                 className="px-2 py-1 bg-red-500 text-white rounded-md hover:bg-red-600"
                 onClick={() => handleRemove(item.id)}
@@ -108,8 +127,26 @@ export default function Cart({ data }) {
                 Remove
               </button>
             </div>
+            <div className="flex items-center">
+              <button
+                className="px-2 py-1 bg-gray-300 text-white rounded-md"
+                onClick={handleDecrement}
+              >
+                -
+              </button>
+              <p className="mx-2">{quantity}</p>
+              <button
+                className="px-2 py-1 bg-gray-300 text-white rounded-md"
+                onClick={handleIncrement}
+              >
+                +
+              </button>
+            </div>
           </fieldset>
-        ))}
+        ))
+      ) : (
+        <p>Cart is Empty</p>
+      )}
       <br />
       <input
         type="submit"
