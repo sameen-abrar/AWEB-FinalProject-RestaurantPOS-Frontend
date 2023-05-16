@@ -57,7 +57,7 @@ export default function ChangePassword() {
         };
 
         console.log("Post Data", data);
-        const response = await fetch("http://localhost:3000/api/user/insert", {
+        const response = await fetch("https://flagrant-part-production.up.railway.app/api/user/insert", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

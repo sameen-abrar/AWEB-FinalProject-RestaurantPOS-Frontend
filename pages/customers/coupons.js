@@ -62,7 +62,9 @@ export default function Coupons({ data }) {
 export async function getServerSideProps() {
   const id = parseInt(Cookies.get("userId"));
   console.log("async func", id);
-  const response = await axios.get(`http://localhost:3000/api/coupons`);
+  const response = await axios.get(
+    `https://flagrant-part-production.up.railway.app/api/coupons`
+  );
   const data = await response.data;
 
   console.log(data);

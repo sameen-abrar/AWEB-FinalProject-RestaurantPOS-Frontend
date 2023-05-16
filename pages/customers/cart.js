@@ -30,7 +30,7 @@ export default function Cart({ data }) {
     async function fetchData() {
       try {
         // alert("are you sure?")
-        const response = await axios.get(`http://localhost:3000/api/coupons`);
+        const response = await axios.get(`https://flagrant-part-production.up.railway.app/api/coupons`);
         const data = await response.data;
 
         setCoupons(data);
@@ -169,7 +169,7 @@ export async function getServerSideProps(context) {
   // const id = sessionStorage.getItem("id");
   // console.log("id: ", Cookies.get("Id"));
   const response = await axios.get(
-    "http://localhost:3000/api/cart/customer/" + ParsedCookie.Id
+    "https://flagrant-part-production.up.railway.app/api/cart/customer/" + ParsedCookie.Id
   );
   const data = await response.data;
 

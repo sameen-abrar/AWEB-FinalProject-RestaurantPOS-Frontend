@@ -21,7 +21,7 @@ export default function Items() {
     async function fetchData() {
       try {
         const response = await axios.get(
-          `http://localhost:3000/api/menu/${id}`
+          `https://flagrant-part-production.up.railway.app/api/menu/${id}`
         );
         const data = await response.data;
 

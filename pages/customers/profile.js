@@ -102,7 +102,7 @@ export async function getServerSideProps(context) {
   // const id = sessionStorage.getItem("id");
   // console.log("id: ", Cookies.get("Id"));
   const response = await axios.get(
-    "http://localhost:3000/api/customer/" + ParsedCookie.Id
+    "https://flagrant-part-production.up.railway.app/api/customer/" + ParsedCookie.Id
   );
   const customerData = await response.data;
 

@@ -71,7 +71,7 @@ export default function UpdateProfile(props) {
         if (confirmed) {
           console.log("updated data: ", updateData);
           const res = await fetch(
-            "http://localhost:3000/api/customer/update/" +
+            "https://flagrant-part-production.up.railway.app/api/customer/update/" +
               props.customerData.id,
             {
               method: "PUT",
@@ -308,7 +308,7 @@ export async function getServerSideProps(context) {
   // const id = sessionStorage.getItem("id");
   // console.log("id: ", Cookies.get("Id"));
   const response = await axios.get(
-    "http://localhost:3000/api/customer/" + ParsedCookie.Id
+    "https://flagrant-part-production.up.railway.app/api/customer/" + ParsedCookie.Id
   );
   const customerData = await response.data;
 

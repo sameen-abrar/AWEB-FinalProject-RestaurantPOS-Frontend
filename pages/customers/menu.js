@@ -31,7 +31,7 @@ export default function Menu({ data }) {
         cart.menuId = item.id;
         console.log(cart);
 
-        const response = await fetch("http://localhost:3000/api/cart/insert", {
+        const response = await fetch("https://flagrant-part-production.up.railway.app/api/cart/insert", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -110,7 +110,7 @@ export default function Menu({ data }) {
 }
 
 export async function getServerSideProps() {
-  const response = await axios.get("http://localhost:3000/api/menu");
+  const response = await axios.get("https://flagrant-part-production.up.railway.app/api/menu");
   const data = await response.data;
 
   console.log(data);
