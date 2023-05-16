@@ -64,7 +64,7 @@ export default function Cart({ data }) {
       console.log(id);
 
       if (confirmed) {
-        const res = await fetch(`http://localhost:3000/api/cart/delete/${id}`, {
+        const res = await fetch(`https://flagrant-part-production.up.railway.app/api/cart/delete/${id}`, {
           method: "DELETE",
           headers: {
             "Content-Type": "application/json",
